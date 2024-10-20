@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* automatic from navlink tag */
+a.active hr {
+  width: 80%;
+}
+@media (max-width: 640px) {
+  a.active {
+    background-color: #000;
+    color: white;
+  }
+}
+/* Style for the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+/* Style for the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey background */
+}
+/* Style for the scrollbar thumb (the handle you drag) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Dark grey handle */
+  border-radius: 10px; /* Optional: rounded corners */
+}
+/* Style for the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker grey when hovered */
+}
+/* !page found */
+.MyAnim {
+  animation: triip 1s steps(2) infinite;
+}
+@keyframes triip {
+  0% {
+    visibility: hidden;
+    /* opacity: 0.1; */
+  }
+  100% {
+    visibility: visible;
+    /* opacity: 1; */
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    outline: none;
+  }
+  /* Apply Oxanium font to all h1 tags */
+  .logo {
+    font-family: "Oxanium", sans-serif;
+    font-weight: bold; /* or a specific weight */
+  }
+  h1 {
+    font-family: "Oxanium", sans-serif;
+  }
+  h1 {
+    @apply text-xl lg:text-2xl 2xl:text-4xl text-[#3e3bbc] font-black;
+  }
+  /* Apply Roboto font to all h2 tags */
+  h2 {
+    font-family: "Roboto", sans-serif;
+  }
+  h2 {
+    @apply text-lg lg:text-2xl xl:text-3xl text-[#3e943a] font-semibold;
+  }
+  /* Apply Open Sans font to all h3 tags */
+  h3 {
+    font-family: "Open Sans", sans-serif;
+  }
+  h3 {
+    @apply text-base sm:text-lg lg:text-xl xl:text-2xl mb-[2px] md:mb-1 lg:mb-1.5 text-[#973e82] font-semibold tracking-wide;
+  }
+  h4 {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+  }
+  h4 {
+    @apply text-base sm:text-lg text-[#1b5e5f] font-bold;
+  }
+  h5 {
+    font-family: "Oxanium", sans-serif;
+  }
+  h5 {
+    @apply text-xs sm:text-sm text-[#505050] font-semibold;
+  }
+  input {
+    font-family: "Oxanium", sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h6 {
+    font-family: "Open Sans", sans-serif;
+  }
+  h6 {
+    @apply text-xs sm:text-sm text-[#b35757] font-light;
+  }
+  /* Apply Lato font to all p tags */
+  p {
+    font-family: "Lato", sans-serif;
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.01rem;
+    line-height: 1.5;
+  }
+  .MyLink {
+    font-family: "Oxanium", sans-serif;
+    font-weight: 700;
+  }
+  .page {
+    font-family: "Lato", sans-serif;
+  }
+  /* Apply Montserrat font to all blockquotes */
+  blockquote {
+    font-family: "Montserrat", sans-serif;
+    color: #777;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.25rem;
+    border-left: 4px solid #ccc;
+    padding-left: 1em;
+    margin: 1em 0;
+  }
+  /* Apply Source Sans Pro font to all buttons */
+  button {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #fff;
+    background-color: #007bff; /* Bootstrap primary color */
+    padding: 0.5em 1em;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  /* Apply Arial font to all spans */
+  span {
+    font-family: Arial, sans-serif;
+    color: #888;
+  }
+  li {
+    list-style: none;
+  }
+}
