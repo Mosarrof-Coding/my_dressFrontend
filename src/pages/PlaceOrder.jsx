@@ -3,6 +3,9 @@ import { assets } from "../assets/assets";
 import TotalCart from "../components/Cart/TotalCart";
 import Title from "../components/Title";
 import { Context } from "../context/Context";
+// awesome button
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 export default function PlaceOrder() {
   const [method, setMethod] = useState("cod");
@@ -163,12 +166,14 @@ export default function PlaceOrder() {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 lg:py-3 px-4 rounded hover:bg-blue-600 transition duration-300"
-          >
-            Submit Payment
-          </button>
+          <span type="submit">
+            <AwesomeButton
+              className="w-full h-7 md:h-8 lg:h-9 xl:h-10 my-1 md:my-0 text-xs md:text-sm lg:text-base font-medium"
+              type="primary"
+            >
+              Submit Payment
+            </AwesomeButton>
+          </span>
         </div>
       </div>
       <div className="w-full">
@@ -210,10 +215,15 @@ export default function PlaceOrder() {
               <h5 className="">Cash on Delevery</h5>
             </div>
           </div>
-          <div className="my-4 text-end">
-            <button onClick={() => navigate("/order")} className="lg:px-12">
-              Place Oeder
-            </button>
+          <div className="my-2 lg:my-4 text-end">
+            <span onClick={() => navigate("/order")}>
+              <AwesomeButton
+                className="h-7 md:h-8 lg:h-9 xl:h-10 my-1 md:my-0 text-xs md:text-sm lg:text-base font-medium"
+                type="primary"
+              >
+                Place Oeder
+              </AwesomeButton>
+            </span>
           </div>
         </div>
       </div>

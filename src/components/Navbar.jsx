@@ -7,9 +7,14 @@ export default function Navbar() {
   const [visible, setVisible] = useState(false);
   const { showSearch, setShowSearch, cartCount } = useContext(Context);
   return (
-    <div className="flex justify-between items-center py-1.5 lg:py-3 xl:py-4 font-medium text-sm lg:text-base">
+    <div className="flex justify-between items-center py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 font-medium text-sm lg:text-base">
       <Link to="/">
-        <img src={assets.logo} alt="" className="w-20 lg:w-24 xl:w-32" />
+        <span className="logo text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-black bg-gradient-to-tr from-[#439fa4] via-[#af1717] to-[#242795] bg-clip-text text-transparent drop-shadow-xl tracking-tight">
+          \|/
+        </span>
+        <span className="oxanium inline-block text-blue-800 w-auto h-1 rounded-full bg-gradient-to-tr from-[#69d6dc] via-[#f33535] to-[#4d53f7] tracking-tighter font-light">
+          my dress
+        </span>
       </Link>
 
       <nav className="hidden sm:flex gap-5 text-gray-600">

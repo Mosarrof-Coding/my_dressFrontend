@@ -3,6 +3,9 @@ import { Context } from "../context/Context";
 import Title from "../components/Title";
 import { assets } from "../assets/assets";
 import TotalCart from "../components/Cart/TotalCart";
+// awesome button
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 export default function Cart() {
   const { products, currency, cartItems, upDateQuantity, navigate } =
@@ -83,9 +86,14 @@ export default function Cart() {
         <div className="w-full sm:w-[360px]">
           <TotalCart />
           <div className="w-full text-end">
-            <button onClick={() => navigate("/Place-order")}>
-              Proceed To Checkout
-            </button>
+            <span onClick={() => navigate("/place-order")}>
+              <AwesomeButton
+                className="h-7 md:h-8 lg:h-9 xl:h-10 my-1 md:my-0 text-xs md:text-sm lg:text-base font-medium"
+                type="primary"
+              >
+                Proceed To Checkout
+              </AwesomeButton>
+            </span>
           </div>
         </div>
       </div>

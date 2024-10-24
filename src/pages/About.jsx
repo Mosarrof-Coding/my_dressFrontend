@@ -1,10 +1,11 @@
 import Newsletter from "../components/Newsletter";
+import Title from "../components/Title";
 
 export default function About() {
   return (
-    <div>
+    <div className="text-center py-6 sm:py-8 lg:py-10 xl:py-12">
+      <Title text1={"About"} text2={"Us"} />
       <p>
-        {" "}
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis id
         ducimus magnam quaerat alias at blanditiis numquam reiciendis, ea
         repellat iure inventore necessitatibus perferendis adipisci neque quia

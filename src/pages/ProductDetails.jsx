@@ -3,6 +3,10 @@ import { Context } from "../context/Context";
 import { useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
+// awesome button
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
 export default function ProductDetails() {
   const { id } = useParams();
   // eslint-disable-next-line no-unused-vars
@@ -24,31 +28,31 @@ export default function ProductDetails() {
   // console.log("product_details", product_details);
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, [id, products]);
 
   return product_details ? (
     <div>
-      <div className="w-full flex items-center flex-col sm:flex-row gap-4 lg:gap-12 py-4 sm:py-6 lg:py-10 text-sm lg:text-base">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-[2fr_3fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7 py-4 sm:py-6 lg:py-10 text-sm lg:text-base">
         {/* img */}
-        <div className="flex gap-4 h-full shrink mx-auto">
-          <div className="thumb flex flex-col justify-between overflow-y-auto">
+        <div className="flex gap-1 sm:gap-2 h-full mx-auto">
+          <div className="thumbimg w-[20%] flex flex-col justify-between overflow-y-auto">
             {product_details.image.map((item, idx) => (
-              <div className="thumbimg max-w-24" key={idx}>
+              <div className="w-full" key={idx}>
                 <img
                   src={item}
-                  alt=""
-                  className="w-full cursor-pointer hover:grayscale grayscale-0 transition-all rounded"
+                  alt="img"
+                  className="w-full cursor-pointer hover:grayscale grayscale-0 transition-all rounded-sm"
                   onClick={() => setImage(item)}
                 />
               </div>
             ))}
           </div>
-          <div className="main">
+          <div className="main w-[80%]">
             <img src={image} alt="" className="w-full rounded" />
           </div>
         </div>
         {/* product info */}
-        <div className="flex-1 min-w-[280px]">
+        <div className="w-full flex flex-col gap-1 sm:gap-2 lg:gap-3">
           <h3>{product_details.name}</h3>
           <div className="flex gap-0.5 items-center">
             <img src={assets.star_icon} alt="" />
@@ -64,28 +68,39 @@ export default function ProductDetails() {
           </h3>
           <h6>{product_details.category}</h6>
           <p>{product_details.description}</p>
-          <div>
+          <div className="flex flex-col gap-1 sm:gap-2 lg:gap-3">
             <h4>Select Size</h4>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center flex-wrap gap-2">
               {product_details.sizes.map((item, idx) => (
-                <button
+                <span
                   key={idx}
                   onClick={() => setSize(item)}
-                  className={`${
-                    item === size ? "border-2 border-orange-500" : ""
+                  className={`px-1 sm:px-1.5 lg:px-2 cursor-pointer text-black text-sm rounded-sm transition-all ${
+                    item === size
+                      ? "border border-yellow-300 shadow-lg bg-gray-200"
+                      : "border"
                   }`}
                 >
                   {item}
-                </button>
+                </span>
               ))}
             </div>
-            <button onClick={() => addToCart(product_details._id, size)}>
-              Add to Cart
-            </button>
+            {/* awesome button */}
+            <span
+              className="text-white inline-block"
+              onClick={() => addToCart(product_details._id, size)}
+            >
+              <AwesomeButton
+                className="h-7 md:h-8 lg:h-9 xl:h-10 my-1 md:my-0 text-xs md:text-sm lg:text-base font-medium"
+                type="primary"
+              >
+                Add to Cart
+              </AwesomeButton>
+            </span>
 
-            <hr className="mt-4 sm:w-4/5" />
+            <hr className="mt-1 sm:mt-2 lg:mt-3" />
           </div>
-          <div className="py-4">
+          <div className="">
             <p>100% original products</p>
             <p>home delevery</p>
             <p>exchange if need</p>
@@ -93,7 +108,7 @@ export default function ProductDetails() {
         </div>
       </div>
       {/* reviews */}
-      <div className="mt-12  w-full">
+      <div className="mt-12 w-full">
         <div className="flex gap-4 items-center border-b-2">
           <b className="cursor-pointer">Description</b>
           <p className="cursor-pointer">Reviews (122)</p>

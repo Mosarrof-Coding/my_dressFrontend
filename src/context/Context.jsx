@@ -1,15 +1,19 @@
 import { createContext, useState } from "react";
-import { products } from "../assets/assets";
+// import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 export const Context = createContext();
 const ContextProvider = (props) => {
   const currency = "$";
   const delivery_fee = 10;
+  const backend_url = import.meta.env.VITE_BACKEND_URL;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   // add to cart
   const addToCart = async (id, size) => {
@@ -88,7 +92,28 @@ const ContextProvider = (props) => {
     upDateQuantity,
     cartAmount,
     navigate,
+    backend_url,
   };
+
+  const productsFetch = async () => {
+    try {
+      const response = await axios.get(backend_url + `/api/product/list`);
+      const data = response.data.products;
+      console.log(data);
+
+      if (response.data.success) {
+        setProducts(data);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    productsFetch();
+  }, []);
 
   // eslint-disable-next-line react/prop-types
   return <Context.Provider value={value}>{props.children}</Context.Provider>;

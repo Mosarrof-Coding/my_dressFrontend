@@ -8,7 +8,7 @@ export default function Latestcollection() {
   const [latestProducts, setLatestProducts] = useState([]);
   useEffect(() => {
     setLatestProducts(products.slice(0, 10));
-  }, []);
+  }, [products]);
   return (
     <div className="py-4 md:py-6 lg:py-10">
       <div className="max-w-[800px] mx-auto text-center">

@@ -1,4 +1,7 @@
 import { useState } from "react";
+// awesome button
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 export default function Login() {
   const [current, setCurrent] = useState("Sign Up");
@@ -8,7 +11,7 @@ export default function Login() {
   return (
     <form
       action=""
-      className="w-98% sm:max-w-96 m-auto flex flex-col items-center gap-4"
+      className="w-98% sm:max-w-96 m-auto flex flex-col items-center gap-4 bg-white"
       onSubmit={handleSubmit}
     >
       <div className="inline-flex items-center gap-2 my-4">
@@ -50,7 +53,15 @@ export default function Login() {
         )}
       </div>
       <div className="my-4">
-        <button>{current === "Login" ? "Sign In" : "Sign up"}</button>
+        {/* awesome button */}
+        <span className="text-white w-full">
+          <AwesomeButton
+            className="w-full h-7 md:h-8 lg:h-9 xl:h-10 my-1 md:my-0 text-xs md:text-sm lg:text-base font-medium"
+            type="primary"
+          >
+            {current === "Login" ? "Sign In" : "Sign up"}
+          </AwesomeButton>
+        </span>
       </div>
     </form>
   );

@@ -9,7 +9,7 @@ export default function BestSeler() {
   useEffect(() => {
     const best_products = products.filter((item) => item.bestseller);
     setBestSeller(best_products);
-  }, []); // Add products as a dependency to rerun the effect when products change
+  }, [products]);
 
   return (
     <div className="py-4 md:py-6 lg:py-10">

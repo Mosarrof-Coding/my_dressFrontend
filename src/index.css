@@ -1,3 +1,6 @@
+/* logo font */
+
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Oxanium:wght@200..800&family=Sixtyfour+Convergence&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +8,14 @@
 /* automatic from navlink tag */
 a.active hr {
   width: 80%;
+}
+.logo {
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+}
+.oxanium {
+  font-family: "Oxanium", sans-serif;
 }
 @media (max-width: 640px) {
   a.active {
@@ -50,10 +61,6 @@ a.active hr {
     outline: none;
   }
   /* Apply Oxanium font to all h1 tags */
-  .logo {
-    font-family: "Oxanium", sans-serif;
-    font-weight: bold; /* or a specific weight */
-  }
   h1 {
     font-family: "Oxanium", sans-serif;
   }
@@ -101,8 +108,8 @@ a.active hr {
   /* Apply Lato font to all p tags */
   p {
     font-family: "Lato", sans-serif;
-    color: #666;
-    font-weight: 300;
+    color: #363636;
+    font-weight: 400;
     letter-spacing: 0.01rem;
     line-height: 1.5;
   }
@@ -128,16 +135,13 @@ a.active hr {
   button {
     font-family: "Source Sans Pro", sans-serif;
     color: #fff;
-    background-color: #007bff; /* Bootstrap primary color */
-    padding: 0.5em 1em;
+    background-color: #007bff;
     font-weight: 600;
-    border-radius: 5px;
     cursor: pointer;
   }
   /* Apply Arial font to all spans */
   span {
     font-family: Arial, sans-serif;
-    color: #888;
   }
   li {
     list-style: none;
