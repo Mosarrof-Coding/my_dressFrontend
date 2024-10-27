@@ -7,13 +7,10 @@ export default function Navbar() {
   const [visible, setVisible] = useState(false);
   const { showSearch, setShowSearch, cartCount } = useContext(Context);
   return (
-    <div className="flex justify-between items-center py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 font-medium text-sm lg:text-base">
+    <div className="flex justify-between items-center py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 font-medium text-sm lg:text-base bg-white">
       <Link to="/">
-        <span className="logo text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-black bg-gradient-to-tr from-[#439fa4] via-[#af1717] to-[#242795] bg-clip-text text-transparent drop-shadow-xl tracking-tight">
-          \|/
-        </span>
-        <span className="oxanium inline-block text-blue-800 w-auto h-1 rounded-full bg-gradient-to-tr from-[#69d6dc] via-[#f33535] to-[#4d53f7] tracking-tighter font-light">
-          my dress
+        <span className="logo1 text-[18px] md:text-[22px] lg:text-[26px] font-black bg-gradient-to-tr from-[#439fa4] via-[#af1717] to-[#242795] bg-clip-text text-transparent drop-shadow-xl">
+          MyDress.
         </span>
       </Link>
 
@@ -59,8 +56,8 @@ export default function Navbar() {
               className="w-3 sm:w-5 cursor-pointer"
             />
           </Link>
-          <div className="hidden group-hover:block dropdown-menu absolute right-0 pt-4 shadow-lg ">
-            <ul className="flex flex-col w-36 bg-slate-50 text-gray-600 py-2 rounded">
+          <div className="hidden group-hover:block dropdown-menu bg-transparent absolute right-0 pt-4 z-10">
+            <ul className="flex flex-col w-36 bg-white text-gray-600 py-2 shadow-lg  rounded">
               <li className="px-1 lg:px-2 py-0.5 lg:py-1 hover:bg-slate-200 transition-all cursor-pointer">
                 My Profile
               </li>
@@ -94,8 +91,8 @@ export default function Navbar() {
       </div>
       {/* sidebar in small screan */}
       <div
-        className={`absolute left-0 top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
-          visible ? "w-full" : "w-0"
+        className={`fixed left-0 top-0 right-0 bottom-0 overflow-hidden transition-all ${
+          visible ? "w-full bg-white z-10" : "w-0"
         }`}
       >
         <div className="flex flex-col text-gray-600">

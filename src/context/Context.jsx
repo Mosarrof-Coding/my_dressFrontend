@@ -14,6 +14,7 @@ const ContextProvider = (props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
   // add to cart
   const addToCart = async (id, size) => {
@@ -78,6 +79,32 @@ const ContextProvider = (props) => {
     return totalAmount;
   };
 
+  const productsFetch = async () => {
+    try {
+      const response = await axios.get(backend_url + `/api/product/list`);
+      const data = response.data.products;
+      // console.log(data);
+      if (response.data.success) {
+        setProducts(data);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    productsFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!token && localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, [token]); // Added token as a dependency
+
   const value = {
     products,
     currency,
@@ -93,27 +120,9 @@ const ContextProvider = (props) => {
     cartAmount,
     navigate,
     backend_url,
+    token,
+    setToken,
   };
-
-  const productsFetch = async () => {
-    try {
-      const response = await axios.get(backend_url + `/api/product/list`);
-      const data = response.data.products;
-      console.log(data);
-
-      if (response.data.success) {
-        setProducts(data);
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    productsFetch();
-  }, []);
 
   // eslint-disable-next-line react/prop-types
   return <Context.Provider value={value}>{props.children}</Context.Provider>;

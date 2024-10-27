@@ -28,38 +28,54 @@ export default function ProductDetails() {
   // console.log("product_details", product_details);
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, products]);
 
   return product_details ? (
     <div>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-[2fr_3fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7 py-4 sm:py-6 lg:py-10 text-sm lg:text-base">
-        {/* img */}
-        <div className="flex gap-1 sm:gap-2 h-full mx-auto">
-          <div className="thumbimg w-[20%] flex flex-col justify-between overflow-y-auto">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-[2fr_3fr] items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7 py-4 sm:py-6 lg:py-10 text-sm lg:text-base">
+        <div className="flex flex-col xl:flex-row items-center gap-2 h-fit mx-auto">
+          {/* Main Image */}
+          <div className="main group md:w-full xl:w-[80%] rounded overflow-hidden relative">
+            <a href={image} target="_blunk" rel="noopener noreferrer">
+              <img src={image} alt="Product Image" className="w-full " />
+            </a>
+            <iframe
+              src="https://gifer.com/embed/IVvP"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              className="absolute left-0 top-0 right-0 bottom-0 opacity-0 group-hover:opacity-10 touch-none pointer-events-none"
+            ></iframe>
+          </div>
+          {/* Thumbnail Images */}
+          <div className="thumbimg w-full xl:w-[20%] flex xl:flex-col gap-1 justify-between">
             {product_details.image.map((item, idx) => (
-              <div className="w-full" key={idx}>
+              <div className="w-[20%] xl:w-full" key={idx}>
                 <img
                   src={item}
-                  alt="img"
-                  className="w-full cursor-pointer hover:grayscale grayscale-0 transition-all rounded-sm"
+                  alt={`Thumbnail ${idx + 1}`}
+                  className="w-full cursor-pointer hover:grayscale transition-all rounded-sm"
                   onClick={() => setImage(item)}
                 />
               </div>
             ))}
           </div>
-          <div className="main w-[80%]">
-            <img src={image} alt="" className="w-full rounded" />
-          </div>
         </div>
         {/* product info */}
-        <div className="w-full flex flex-col gap-1 sm:gap-2 lg:gap-3">
+        <div className="w-full flex flex-col gap-0.5 sm:gap-1 lg:gap-2">
           <h3>{product_details.name}</h3>
           <div className="flex gap-0.5 items-center">
-            <img src={assets.star_icon} alt="" />
-            <img src={assets.star_icon} alt="" />
-            <img src={assets.star_icon} alt="" />
-            <img src={assets.star_icon} alt="" />
-            <img src={assets.star_dull_icon} alt="" />
+            <img src={assets.star_icon} alt="" className="w-4 md:w-5 lg:w-6" />
+            <img src={assets.star_icon} alt="" className="w-4 md:w-5 lg:w-6" />
+            <img src={assets.star_icon} alt="" className="w-4 md:w-5 lg:w-6" />
+            <img src={assets.star_icon} alt="" className="w-4 md:w-5 lg:w-6" />
+            <img
+              src={assets.star_dull_icon}
+              alt=""
+              className="w-4 md:w-5 lg:w-6"
+            />
             <h6>(122)</h6>
           </div>{" "}
           <h3>
@@ -87,7 +103,7 @@ export default function ProductDetails() {
             </div>
             {/* awesome button */}
             <span
-              className="text-white inline-block"
+              className="text-white w-fit"
               onClick={() => addToCart(product_details._id, size)}
             >
               <AwesomeButton
@@ -100,10 +116,10 @@ export default function ProductDetails() {
 
             <hr className="mt-1 sm:mt-2 lg:mt-3" />
           </div>
-          <div className="">
-            <p>100% original products</p>
-            <p>home delevery</p>
-            <p>exchange if need</p>
+          <div className="flex flex-col gap-0.5 md:gap-1">
+            <p className="text-base md:text-lg text-blue-400">
+              100% Original Products | Home Delivery | Easy Exchange Available
+            </p>
           </div>
         </div>
       </div>

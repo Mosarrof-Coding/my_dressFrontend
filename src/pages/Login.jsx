@@ -1,13 +1,58 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // awesome button
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import { Context } from "../context/Context";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const { token, setToken, navigate, backend_url } = useContext(Context);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   const [current, setCurrent] = useState("Sign Up");
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      if (current === "Sign Up") {
+        const response = await axios.post(backend_url + `/api/user/register`, {
+          name,
+          email,
+          password,
+        });
+        console.log("response", response);
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+        } else {
+          toast.error(response.data.message);
+        }
+      } else {
+        const response = await axios.post(backend_url + `/api/user/login`, {
+          email,
+          password,
+        });
+        if (response.data?.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+        } else {
+          toast.error(response.data?.message || "An error occurred");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+
   return (
     <form
       action=""
@@ -23,23 +68,34 @@ export default function Login() {
       ) : (
         <input
           type="text"
+          name="name"
+          id="name"
           placeholder="Name"
           required
           className="w-full px-4 py-1 lg:py-2 border"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
       )}
       <input
         type="email"
         placeholder="email"
+        name="email"
+        id="email"
         required
         className="w-full px-4 py-1 lg:py-2 border"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
       />
       <input
-        type="passward"
+        type="password" // Fixed typo here
         placeholder="password"
         required
         className="w-full px-4 py-1 lg:py-2 border"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
       />
+
       <div className="w-full flex justify-between gap-3">
         <p className="cursor-pointer">Forgot Your Password?</p>
         {current === "Login" ? (

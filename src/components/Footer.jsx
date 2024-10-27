@@ -5,12 +5,9 @@ export default function Footer() {
     <>
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr_1fr] gap-2 sm:gap-4 lg:gap-10 py-4 md:py-6 lg:py-10">
         <div>
-          <Link to="/" className="">
-            <span className="logo text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-black bg-gradient-to-tr from-[#439fa4] via-[#af1717] to-[#242795] bg-clip-text text-transparent drop-shadow-xl tracking-tight">
-              \|/
-            </span>
-            <span className="oxanium inline-block text-blue-800 w-auto h-1 rounded-full bg-gradient-to-tr from-[#69d6dc] via-[#f33535] to-[#4d53f7] tracking-tighter font-light">
-              my dress
+          <Link to="/">
+            <span className="logo1 text-[18px] md:text-[22px] lg:text-[26px] font-black bg-gradient-to-tr from-[#439fa4] via-[#af1717] to-[#242795] bg-clip-text text-transparent drop-shadow-xl">
+              MyDress.
             </span>
           </Link>
           <p className="mt-2">

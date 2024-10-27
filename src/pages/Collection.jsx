@@ -83,17 +83,17 @@ export default function Collection() {
   return (
     <div className="flex flex-col sm:flex-row gap-4 lg:gap-10 py-4 sm:py-6 lg:py-10">
       <div>
-        {/* filter options */}
-        <h5>Filters</h5>
         {/* category filter */}
-        <div className={`mb-8 ${filter ? "" : "hidden"} sm:block`}>
-          <h5>Categories</h5>
-          <div className="flex flex-col gap-4">
-            <ul className="flex flex-col gap-4 border p-4">
+        <div className={`${filter ? "" : "hidden"} sm:block`}>
+          <div className="flex flex-col gap-2 lg:gap-3 mt-4">
+            <p className="text-sm sm:text-base font-medium text-black">
+              Categories
+            </p>
+            <ul className="flex flex-col gap-1 md:gap-2 lg:gap-3 border p-1 sm:p-1.5 lg:p-2 rounded">
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value={"Men"}
                   onChange={togglecategory}
                 />
@@ -102,7 +102,7 @@ export default function Collection() {
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value="Women"
                   onChange={togglecategory}
                 />
@@ -111,18 +111,18 @@ export default function Collection() {
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value={"Kids"}
                   onChange={togglecategory}
                 />
                 Kids
               </li>
             </ul>
-            <ul className="flex flex-col gap-4 border p-4">
+            <ul className="flex flex-col gap-1 md:gap-2 lg:gap-3 border p-1 sm:p-1.5 lg:p-2 rounded">
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value={"Topwear"}
                   onChange={toggleSubCategory}
                 />
@@ -131,7 +131,7 @@ export default function Collection() {
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value={"Bottomwear"}
                   onChange={toggleSubCategory}
                 />
@@ -140,7 +140,7 @@ export default function Collection() {
               <li className="flex gap-2">
                 <input
                   type="checkbox"
-                  className="w-3"
+                  className="w-3 lg:w-3.5"
                   value={"Winterwear"}
                   onChange={toggleSubCategory}
                 />
@@ -152,7 +152,7 @@ export default function Collection() {
       </div>
       {/* right side */}
       <div className="flex-1">
-        <div className="flex justify-between mb-4">
+        <div className="flex justify-between items-center gap-4">
           <Title text1={"All"} text2={"COLLECTIONS"} />
           {/* product sort */}
           <select
@@ -160,14 +160,15 @@ export default function Collection() {
             id=""
             value={sortType}
             onChange={(e) => setSortType(e.target.value)}
+            className="border rounded px-1 lg:px-2 pb-0.5 h-fit text-xs sm:text-sm"
           >
-            <option value="relevant">Sort by: Relevant</option>
-            <option value="lowToHigh">Sort by: Low to High</option>
-            <option value="highToLow">Sort by: High to Low</option>
+            <option value="relevant">Relevant</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
           </select>
         </div>
         {/* map all products */}
-        <div className="productCard py-4 lg:py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="productCard py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {filterProducts.map((product, idx) => (
             <div key={idx} className="mx-auto">
               <Productcard
